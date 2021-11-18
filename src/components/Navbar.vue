@@ -9,7 +9,10 @@
       <li><a href="">Projects</a></li>
       <li><a href="">Contact</a></li>
     </ul>
-  </nav>
+    <a href="" class="navbar__toggleBtn">
+      <i class="fas fa-bars"></i>
+  </a>
+  </nav>  
 </template>
 
 <script>
@@ -40,6 +43,7 @@ nav {
 }
 .navbar__menu {
   display: flex;
+  font-size:  16px;
   list-style: none;
   padding-left: 0;
 }
@@ -49,5 +53,31 @@ nav {
 .navbar__menu li:hover {
   background-color: #d49466;
   border-radius: 4px;
+}
+.navbar__toggleBtn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+  .navbar__menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar__menu:hover {
+    width: 100%;
+  }
+  .navbar__toggleBtn {
+    display: flex;
+    position: absolute;
+    font-size: 24px;
+    color: #d49466;
+    padding: 4px;
+    right: 12px;
+  }
 }
 </style>
