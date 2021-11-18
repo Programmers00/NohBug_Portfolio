@@ -16,7 +16,6 @@ export default {
 <style scoped>
 .footerOutline {
   border-style: solid;
-  width: 100%;
   height: 102px;
   display: flex;
   justify-content: center;

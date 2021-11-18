@@ -23,7 +23,6 @@ export default {
 <style scoped>
 section {
   border-style: solid;
-  width: 100%;
   height: 706px;
   display: flex;
   justify-content: center;

@@ -14,7 +14,5 @@ export default {
 <style scoped>
 header {
   border-style: solid;
-  width: 1440px;
-  height: 56px;
 }
 </style>
