@@ -4,14 +4,16 @@
       <i class="fas fa-bug"></i>
       <a href="">NohBug</a>
     </div>
-    <ul class="navbar__menu">
-      <li><a href="">About</a></li>
-      <li><a href="">Projects</a></li>
-      <li><a href="">Contact</a></li>
-    </ul>
-    <a href="" class="navbar__toggleBtn">
-      <i class="fas fa-bars"></i>
-  </a>
+    <div class="navbar__menu__toggleBtn">
+      <i class="fas fa-bars navbar__toggleIcon"></i>
+      <input type="checkbox" id="navbar__toggleBtn" class="navbar__toggleBtn">
+      <ul class="navbar__menu">
+        <li><a href="">About</a></li>
+        <li><a href="">Projects</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+      <label for="navbar__toggleBtn"></label>
+    </div>
   </nav>  
 </template>
 
@@ -41,6 +43,10 @@ nav {
 .navbar__logo i{
   color: #d49466;
 }
+.navbar__menu__toggleBtn i,
+.navbar__menu__toggleBtn input{
+  display: none;
+}
 .navbar__menu {
   display: flex;
   font-size:  16px;
@@ -54,9 +60,6 @@ nav {
   background-color: #d49466;
   border-radius: 4px;
 }
-.navbar__toggleBtn {
-  display: none;
-}
 
 @media screen and (max-width: 768px) {
   nav {
@@ -64,20 +67,39 @@ nav {
     align-items: flex-start;
     padding: 8px;
   }
-  .navbar__menu {
-    flex-direction: column;
+  .navbar__menu__toggleBtn {
+    display: flex;
     width: 100%;
   }
-  .navbar__menu:hover {
-    width: 100%;
-  }
-  .navbar__toggleBtn {
+  .navbar__menu__toggleBtn i {
     display: flex;
     position: absolute;
     font-size: 24px;
     color: #d49466;
     padding: 4px;
+    top: 24px;
     right: 12px;
+  }
+  .navbar__menu__toggleBtn input {
+    display: flex;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 24px;
+    right: 12px;
+    opacity: 0;
+    z-index: 1;
+  }
+  .navbar__menu {
+    display: inline;
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar__toggleBtn:checked + .navbar__menu{
+    display: none;
+  }
+  .navbar__toggleBtn:checked + .navbar__toggleIcon{
+    color: whitesmoke;
   }
 }
 </style>
