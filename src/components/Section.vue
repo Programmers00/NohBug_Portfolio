@@ -1,8 +1,8 @@
 <template>
   <section>
     <div class="content">
-      <Article/>
-      <Picture/>
+        <Article/>
+        <Picture/>
     </div>
   </section>
 </template>
@@ -31,8 +31,8 @@ section {
   border-style: solid;
   width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
 }
 </style>
