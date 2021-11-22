@@ -1,5 +1,4 @@
 <template>
-  <div class="footer__Outline">
     <footer>
       <ul>
         <a href=""><i class="fab fa-instagram"></i></a>
@@ -7,11 +6,10 @@
         <a href=""><i class="fas fa-at"></i></a>
       </ul>
       <div class="navbar__logo">
-      <i class="fas fa-bug"></i>
-      <a href="#">NohBug</a>
+        <i class="fas fa-bug"></i>
+        <a href="#">NohBug</a>
     </div>
     </footer>
-  </div>
 </template>
 
 <script>
@@ -26,33 +24,28 @@ a {
   text-decoration: none;
   color: #263343;
 }
-.footer__Outline {
-  border-style: solid;
-  height: 102px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 footer {
   flex-direction: column;
   border-style: solid;
-  width: 192px;
-  height: 102px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 footer ul {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
   font-size: 24px;
   color: #263343;
   list-style: none;
   padding-left: 0;
 }
+footer ul a {
+  padding: 8px;
+}
 .navbar__logo {
-  font-size: 16px;
+  padding: 8px;
+  font-size: 24px;
   color: whitesmoke;
 }
 .navbar__logo i{
