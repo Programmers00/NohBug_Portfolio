@@ -1,6 +1,6 @@
 <template>
   <picture>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png" alt="Image">
+    <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="Image">
   </picture>
 </template>
 
@@ -13,16 +13,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 picture {
-  border-style: solid;
-  width: 524px;
-  height: 524px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-style: solid;
+  border-radius: 50%;
+  width: 524px;
+  height: 524px;
+  background-color: whitesmoke;
 }
 img {
   width: 100%;
-  border-radius: 4px;
-  padding: 4px;
+  height: 100%;
+  border-radius: 50%;
 }
 </style>
