@@ -25,7 +25,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px;
+  padding: 96px 24px 24px;
 }
 .content {
   width: 1200px;
