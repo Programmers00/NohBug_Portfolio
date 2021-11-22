@@ -89,6 +89,7 @@ nav {
     right: 12px;
     opacity: 0;
     z-index: 1;
+    cursor: pointer;
   }
   .navbar__menu {
     display: inline;
