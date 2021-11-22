@@ -6,7 +6,7 @@
     </div>
     <div class="navbar__menu__toggleBtn">
       <i class="fas fa-bars navbar__toggleIcon"></i>
-      <input type="checkbox" id="navbar__toggleBtn" class="navbar__toggleBtn" value="0">
+      <input type="checkbox" id="navbar__toggleBtn" class="navbar__toggleBtn" checked="unchecked">
       <ul class="navbar__menu">
         <li><a href="">About</a></li>
         <li><a href="">Projects</a></li>
