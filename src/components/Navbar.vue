@@ -34,7 +34,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: #263343;
-  padding: 8px 24px;
+  padding: 8px;
 }
 .navbar__logo {
   font-size: 24px;
@@ -77,7 +77,7 @@ nav {
     font-size: 24px;
     color: #d49466;
     padding: 4px;
-    top: 24px;
+    top: 15px;
     right: 12px;
   }
   .navbar__menu__toggleBtn input {
@@ -85,7 +85,7 @@ nav {
     position: absolute;
     width: 24px;
     height: 24px;
-    top: 24px;
+    top: 15px;
     right: 12px;
     opacity: 0;
     z-index: 1;
