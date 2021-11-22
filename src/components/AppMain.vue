@@ -1,20 +1,20 @@
 <template>
   <div>
     <Header/>
-    <Section/>
+    <About/>
     <Footer/>
   </div>
 </template>
 
 <script>
 import Header from './Header'
-import Section from './Section'
+import About from './About'
 import Footer from './Footer.vue'
 export default {
   name: 'AppMain',
   components: {
     Header,
-    Section,
+    About,
     Footer
   }
 }
