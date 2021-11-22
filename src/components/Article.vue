@@ -20,7 +20,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 article {
-  
+  width: 588px;
 }
 h1 {
   text-align: left;
