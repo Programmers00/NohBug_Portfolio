@@ -26,7 +26,7 @@ a {
 }
 footer {
   flex-direction: column;
-  border-style: solid;
+  
   display: flex;
   justify-content: center;
   align-items: center;

@@ -20,7 +20,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 article {
-  border-style: solid;
+  
 }
 h1 {
   text-align: left;

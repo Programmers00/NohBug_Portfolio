@@ -22,13 +22,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 section {
-  border-style: solid;
+  
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .content {
-  border-style: solid;
+  
   width: 1200px;
   display: flex;
   justify-content: space-around;
