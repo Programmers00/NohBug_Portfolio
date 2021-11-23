@@ -17,8 +17,18 @@ section {
   justify-content: center;
   align-items: center;
   padding: 24px;
-  border: solid;
+  border: 2px solid #263343;
   width: 100%;
   height: 500px;
+  cursor: pointer;
+  transition: all 1s;
+  box-shadow: 2px 2px 2px 2px whitesmoke;
+  opacity: .9;
+  transition-timing-function: ease-out;
+}
+section:hover {
+  border: 3px solid #263343;
+  transform: scale(1.05);
+  box-shadow: 5px 5px 5px 5px whitesmoke;
 }
 </style>
