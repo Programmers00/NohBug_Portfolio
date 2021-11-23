@@ -65,7 +65,7 @@ nav {
   nav {
     flex-direction: column;
     align-items: flex-start;
-    padding: 8px;
+    padding: 16px;
   }
   .navbar__menu__toggleBtn {
     display: flex;
