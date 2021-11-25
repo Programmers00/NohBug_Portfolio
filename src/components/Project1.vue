@@ -1,12 +1,17 @@
 <template>
   <section>
     <h1> PROJECT1 </h1>
+    <Weather/>
   </section>
 </template>
 
 <script>
+import Weather from './Weather'
 export default {
-  name: 'Project1'
+  name: 'Project1',
+  components: {
+    Weather
+  }
 }
 </script>
 
