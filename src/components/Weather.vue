@@ -1,7 +1,7 @@
 <template>
   <div class="weather">
     <div>
-      <h2>Weather</h2>
+      <h2>Weather in Your City</h2>
       <!-- <input v-model="request.city_name">
       <button @click="checkWeather">Check Weather</button> -->
     </div>
@@ -72,13 +72,8 @@ export default {
   align-items: center;
   flex-direction: column;
   background-color: whitesmoke;
-}
-input {
   border: 2px solid #263343;
   border-radius: 4px;
-}
-button {
-  border: 2px solid lightgray;
-  border-radius: 4px;
+  width: 300px;
 }
 </style>
