@@ -2,16 +2,19 @@
   <section>
     <div class="content">
       <Weather/>
+      <GoogleMap/>
     </div>
   </section>
 </template>
 
 <script>
+import GoogleMap from './GoogleMap.vue'
 import Weather from './Weather'
 export default {
   name: 'Project1',
   components: {
-    Weather
+    Weather,
+    GoogleMap
   }
 }
 </script>
@@ -31,11 +34,11 @@ section {
   opacity: .9;
   transition-timing-function: ease-out;
 }
-section:hover {
+/* section:hover {
   border: 3px solid #263343;
   transform: scale(1.05);
   box-shadow: 5px 5px 5px 5px whitesmoke;
-}
+} */
 .content {
   display: flex;
   justify-content: space-around;
