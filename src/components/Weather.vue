@@ -75,5 +75,6 @@ export default {
   border: 2px solid #263343;
   border-radius: 4px;
   width: 300px;
+  height: 400px;
 }
 </style>
