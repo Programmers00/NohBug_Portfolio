@@ -7,23 +7,47 @@
 import gmapsInit from '@/utils/gmaps.js'
 export default {
   name: 'GoogleMap',
+  data(){
+    return {
+      response: {
+        latitude: '',
+        longitude: ''
+      }
+    } 
+  },
+  created() {
+    navigator.geolocation.getCurrentPosition(location => {
+        this.latitude = location.coords.latitude
+        this.longitude = location.coords.longitude
+        console.log(this.latitude, this.longitude)
+      })
+  },
   async mounted() {
     try {
       const google = await gmapsInit()
       const geocoder = new google.maps.Geocoder()
       const map = new google.maps.Map(this.$el)
 
-      geocoder.geocode({ address: 'Austria'}, (results, status) => {
+      new google.maps.Marker({
+        position: {lat: 35.1917857, lng: 129.060646},
+        map,
+        title: 'I am here'
+      })
+      geocoder.geocode({ address: 'busan'}, (results, status) => {
+        // console.log("#address", address)
+        console.log("#(results[0].geometry.location", (results[0].geometry.location))
+        console.log("#results[0].geometry.viewport", results[0].geometry.viewport)
         if(status !== 'OK' || !results[0]) {
           throw new Error(status)
         }
         map.setCenter(results[0].geometry.location)
         map.fitBounds(results[0].geometry.viewport)
+
       })
     } catch(error) {
       console.error(error)
     }
-  }
+  },
 }
 </script>
 
