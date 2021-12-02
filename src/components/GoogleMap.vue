@@ -2,52 +2,60 @@
   <div class="GoogleMap">
   </div>
 </template>
-
 <script>
 import gmapsInit from '@/utils/gmaps.js'
 export default {
   name: 'GoogleMap',
   data(){
     return {
-      response: {
-        latitude: '',
-        longitude: ''
-      }
+      //User Information
+      response: [{
+        position: { //Vancouver
+          lat: 49.246292,
+          lng: -123.116226
+        },
+        title: "I am Here"
+      }]
     } 
   },
   created() {
+    //Geolocation
     navigator.geolocation.getCurrentPosition(location => {
-        this.latitude = location.coords.latitude
-        this.longitude = location.coords.longitude
-        console.log(this.latitude, this.longitude)
+        this.response[0].position.lat = location.coords.latitude
+        this.response[0].position.lng = location.coords.longitude
       })
   },
   async mounted() {
     try {
+      //GoogleMap
       const google = await gmapsInit()
       const geocoder = new google.maps.Geocoder()
       const map = new google.maps.Map(this.$el)
 
-      new google.maps.Marker({
-        position: {lat: 35.1917857, lng: 129.060646},
-        map,
-        title: 'I am here'
-      })
-      geocoder.geocode({ address: 'busan'}, (results, status) => {
-        // console.log("#address", address)
-        console.log("#(results[0].geometry.location", (results[0].geometry.location))
-        console.log("#results[0].geometry.viewport", results[0].geometry.viewport)
+      //Example) Point Markers
+      // new google.maps.Marker({
+      //   position: {lat: 35.1917857, lng: 129.060646},
+      //   map,
+      //   title: 'I am here'
+      // })
+
+      //geocode: location -> address(City, Country ...)
+      //          address -> location(latitude, longitude)
+      geocoder.geocode({ location: this.response[0].position }, (results, status) => {
         if(status !== 'OK' || !results[0]) {
           throw new Error(status)
         }
+        //map's center
         map.setCenter(results[0].geometry.location)
+        //map's fit, display ratio...
         map.fitBounds(results[0].geometry.viewport)
-
       })
+      //Point Marker
+      this.response.map(data => new google.maps.Marker({ ...data, map })); 
     } catch(error) {
       console.error(error)
     }
-  },
+  }
 }
 </script>
 
