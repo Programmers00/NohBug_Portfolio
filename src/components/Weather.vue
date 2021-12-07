@@ -30,15 +30,15 @@ export default {
           icon: '',
           city: '',
           country: '',
-          lat: '',
-          lng: ''
+          latitude: '',
+          longitude: ''
         }
       } 
     },
     created() {
       navigator.geolocation.getCurrentPosition(location => {
-        this.lat = location.coords.latitude
-        this.lng = location.coords.longitude
+        this.response.latitude = location.coords.latitude
+        this.response.longitude = location.coords.longitude
         // console.log(this.lat, this.lng)
       })
     },
@@ -48,7 +48,7 @@ export default {
   methods:{
     checkWeather() {
       setTimeout(() => { 
-        fetch(`${this.request.base_url}weather?lat=${this.lat}&lon=${this.lng}&appid=${this.request.api_key}`)
+        fetch(`${this.request.base_url}weather?lat=${this.response.latitude}&lon=${this.response.longitude}&appid=${this.request.api_key}`)
           .then(response => response.json())
           .then(result => this.results(result))
           }, 1000)
