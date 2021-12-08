@@ -3,18 +3,21 @@
     <div class="content">
       <Weather/>
       <GoogleMap/>
+      <Clock/>
     </div>
   </section>
 </template>
 
 <script>
-import GoogleMap from './GoogleMap.vue'
+import GoogleMap from './GoogleMap'
 import Weather from './Weather'
+import Clock from './Clock'
 export default {
   name: 'Project1',
   components: {
     Weather,
-    GoogleMap
+    GoogleMap,
+    Clock
   }
 }
 </script>
