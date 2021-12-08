@@ -1,17 +1,12 @@
 <template>
   <div class="weather">
-    <div>
-      <h2>Weather in Your City</h2>
       <!-- <input v-model="request.city_name">
       <button @click="checkWeather">Check Weather</button> -->
-    </div>
-    <div>
-      <h2>{{response.degree}}°C</h2>
-      <h3>{{response.weather}}</h3>
+      <span>{{response.degree}}°C</span>
+      <span>{{response.weather}}</span>
       <img v-bind:src="response.icon" alt="weather">
-      <h3>{{response.city}}</h3>
-      <h3>{{response.country}}</h3>
-    </div>
+      <span>{{response.city}}</span>
+      <span>{{response.country}}</span>
   </div>
 </template>
 
@@ -76,5 +71,8 @@ export default {
   border-radius: 4px;
   width: 300px;
   height: 400px;
+  font-size: 25px;
+  font-weight: bold;
+  gap: 10px;
 }
 </style>
