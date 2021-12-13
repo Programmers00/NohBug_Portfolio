@@ -64,6 +64,7 @@ section .slide__wrap {
 section .slide__list {
   white-space: nowrap;
   font-size: 0;
+  padding: 0px;
 }
 section .slide__list > li {
   display: inline-block;
@@ -80,7 +81,7 @@ section .slide__list > li > a img {
 }
 section .slide__list label {
   position: absolute;
-  z-index:999;
+  z-index:10;
   top: 50%;
   transform: translateY(-50%);
   padding: 50px;
@@ -88,22 +89,15 @@ section .slide__list label {
 }
 section .slide__list .left {
   left: 30px;
+  transition: all .8s;
   background:url('../assets/images/left.png') center center / 100% no-repeat;
 }
 section .slide__list .right {
   right: 30px;
+  transition: all .8s;
   background:url('../assets/images/right.png') center center / 100% no-repeat;
 }
-/* section:hover {
-  border: 3px solid #263343;
-  transform: scale(1.05);
-  box-shadow: 5px 5px 5px 5px whitesmoke;
-} */
-.content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+section [id="slide01"]:checked ~ .slide__wrap .slide__list > li {transform: translateX(0%);}
+section [id="slide02"]:checked ~ .slide__wrap .slide__list > li {transform: translateX(-100%);}
+section [id="slide03"]:checked ~ .slide__wrap .slide__list > li {transform: translateX(-200%);}
 </style>
