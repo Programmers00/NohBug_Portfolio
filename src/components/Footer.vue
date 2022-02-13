@@ -1,9 +1,9 @@
 <template>
     <footer>
       <ul>
-        <a href=""><i class="fab fa-instagram"></i></a>
-        <a href=""><i class="fab fa-facebook-square"></i></a>
-        <a href=""><i class="fas fa-at"></i></a>
+        <a href="https://www.instagram.com/eunshinnoh/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/eunshin.noh" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=nes0410@gmail.com" target="_blank"><i class="fas fa-at"></i></a>
       </ul>
       <div class="navbar__logo">
         <i class="fas fa-bug"></i>
