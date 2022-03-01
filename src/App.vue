@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AppMain from './components/AppMain.vue'
+import AppMain from './layout/AppMain.vue'
 export default {
   name: 'App',
   components: {

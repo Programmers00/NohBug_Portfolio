@@ -4,17 +4,22 @@
         <Article/>
         <Picture/>
     </div>
+    <div>
+      <Slide/>
+      </div>
   </section>
 </template>
 
 <script>
-import Article from './Article'
-import Picture from './Picture'
+import Article from './components/Article'
+import Picture from './components/Picture'
+import Slide from './components/Slide'
 export default {
-  name: 'Section',
+  name: 'about',
   components: {
     Article,
-    Picture
+    Picture,
+    Slide
   }
 }
 </script>
@@ -23,6 +28,7 @@ export default {
 <style scoped>
 section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 96px 24px 24px;

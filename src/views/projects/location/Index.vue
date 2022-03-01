@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import GoogleMap from './GoogleMap'
-import Weather from './Weather'
-import Clock from './Clock'
+import GoogleMap from './components/GoogleMap'
+import Weather from './components/Weather'
+import Clock from './components/Clock'
 export default {
-  name: 'Project1',
+  name: 'location',
   components: {
     Weather,
     GoogleMap,

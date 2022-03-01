@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'Project2'
+  name: 'slide'
 }
 </script>
 
@@ -90,12 +90,12 @@ section .slide__list label {
 section .slide__list .left {
   left: 30px;
   transition: all .8s;
-  background:url('../assets/images/left.png') center center / 100% no-repeat;
+  background:url('../../../assets/images/left.png') center center / 100% no-repeat;
 }
 section .slide__list .right {
   right: 30px;
   transition: all .8s;
-  background:url('../assets/images/right.png') center center / 100% no-repeat;
+  background:url('../../../assets/images/right.png') center center / 100% no-repeat;
 }
 section [id="slide01"]:checked ~ .slide__wrap .slide__list > li {transform: translateX(0%);}
 section [id="slide02"]:checked ~ .slide__wrap .slide__list > li {transform: translateX(-100%);}
