@@ -1,20 +1,19 @@
 <template>
   <div>
     <Header/>
-    <Index/>
+  <router-view/>
     <Footer/>
   </div>
+  
 </template>
 
 <script>
 import Header from './Header'
-import Index from '../views/main/Index'
 import Footer from './Footer'
 export default {
   name: 'AppMain',
   components: {
     Header,
-    Index,
     Footer
   }
 }

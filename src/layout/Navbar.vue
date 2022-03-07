@@ -8,9 +8,9 @@
       <i class="fas fa-bars navbar__toggleIcon"></i>
       <input type="checkbox" id="navbar__toggleBtn" class="navbar__toggleBtn" checked="unchecked">
       <ul class="navbar__menu">
-        <li><a href="">About</a></li>
-        <li><a href="">Projects</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a @click="click('/')">About</a></li>
+        <li><a @click="click('/location')">Location</a></li>
+        <li><a @click="click('/contact')">Contact</a></li>
       </ul>
       <label for="navbar__toggleBtn"></label>
     </div>
@@ -20,7 +20,16 @@
 <script>
 export default {
   name: 'Navbar',
+  methods: {
+    // connect page
+    click(path) {
+      this.$router.push(path)
+    }
+  }
 }
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
