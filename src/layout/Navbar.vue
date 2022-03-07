@@ -8,9 +8,15 @@
       <i class="fas fa-bars navbar__toggleIcon"></i>
       <input type="checkbox" id="navbar__toggleBtn" class="navbar__toggleBtn" checked="unchecked">
       <ul class="navbar__menu">
-        <li><a @click="click('/')">About</a></li>
-        <li><a @click="click('/location')">Location</a></li>
-        <li><a @click="click('/contact')">Contact</a></li>
+        <li>
+          <router-link to='/'>About</router-link>
+        </li>
+        <li>
+          <router-link to='/location'>Location</router-link>
+        </li>
+        <li>
+          <router-link to='/contact'>Contact</router-link>
+        </li>
       </ul>
       <label for="navbar__toggleBtn"></label>
     </div>
@@ -20,12 +26,6 @@
 <script>
 export default {
   name: 'Navbar',
-  methods: {
-    // connect page
-    click(path) {
-      this.$router.push(path)
-    }
-  }
 }
 
 
