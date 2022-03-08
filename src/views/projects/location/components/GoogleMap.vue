@@ -69,7 +69,7 @@ export default {
   background-color: whitesmoke;
   border: 2px solid #263343;
   border-radius: 4px;
-  width: 300px;
+  min-width: 300px;
   height: 400px;
 }
 </style>

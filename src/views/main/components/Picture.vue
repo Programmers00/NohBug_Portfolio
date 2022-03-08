@@ -16,9 +16,8 @@ picture {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   border-radius: 50%;
-  width: 524px;
+  min-width: 524px;
   height: 524px;
   background-color: whitesmoke;
 }

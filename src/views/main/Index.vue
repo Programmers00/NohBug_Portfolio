@@ -1,25 +1,18 @@
 <template>
   <section>
-    <div class="content">
-        <Article/>
-        <Picture/>
-    </div>
-    <div>
-      <Slide/>
-      </div>
+    <Article/>
+    <Picture/> 
   </section>
 </template>
 
 <script>
 import Article from './components/Article'
 import Picture from './components/Picture'
-import Slide from './components/Slide'
 export default {
-  name: 'about',
+  name: 'About',
   components: {
     Article,
-    Picture,
-    Slide
+    Picture
   }
 }
 </script>
@@ -28,16 +21,10 @@ export default {
 <style scoped>
 section {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 96px 24px 24px;
-}
-.content {
-  width: 1200px;
-  display: flex;
+  flex-wrap: wrap-reverse;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap-reverse;
+  padding: 96px 24px 24px;
+  gap: 10px;
 }
 </style>
