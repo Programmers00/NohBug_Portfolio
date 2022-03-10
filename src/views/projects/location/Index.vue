@@ -1,20 +1,20 @@
 <template>
   <section>
     <Weather/>
-    <GoogleMap/>
+    <GoogleMapEmbed/>
     <Clock/>
   </section>
 </template>
 
 <script>
-import GoogleMap from './components/GoogleMap'
+import GoogleMapEmbed from './components/GoogleMapEmbed'
 import Weather from './components/Weather'
 import Clock from './components/Clock'
 export default {
   name: 'location',
   components: {
     Weather,
-    GoogleMap,
+    GoogleMapEmbed,
     Clock
   }
 }
