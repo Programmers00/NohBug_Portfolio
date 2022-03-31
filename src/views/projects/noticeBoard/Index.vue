@@ -17,55 +17,61 @@ import {reactive, ref, onMounted} from "vue"
 import "ag-grid-community/dist/styles/ag-grid.css"
 import "ag-grid-community/dist/styles/ag-theme-alpine.css"
 import { AgGridVue } from "ag-grid-vue3"
+import gridOptions from './data/gridOptions.js' //gridOption from js
+import mock from '@/api/mock/noticeBoard.json'  //gridMock from json
 
 export default {
   name: 'NoticeBoard',
   components: {
      AgGridVue
   },
-  setup() {
-    let rowData = reactive([])
-    let gridApi = ref(null)
-    // eslint-disable-next-line no-unused-vars
-    let columnApi = ref(null)
-
-    
-    onMounted(() => {
-        fetch('https://www.ag-grid.com/example-assets/row-data.json')
-          .then(result => result.json())
-          .then(remoteRowData => rowData.value = remoteRowData)
-    })
-
-    const onGridReady = params => {
-      gridApi = params.api
-      columnApi = params.columnApi
-    }
-
-    const getSelectedRows = () => {
-      console.log("##gridApi", gridApi)
-      const selectedNodes = gridApi.value.getSelectedNodes()
-      const selectedData = selectedNodes.map( node => node.data )
-      const selectedDataStringPresentation = selectedData.map( node => `${node.make} ${node.model}`).join(', ')
-      alert(`Selected nodes: ${selectedDataStringPresentation}`)
-    }
+  data() {
     return {
-      columnDefs: [
-        { headerName: "No", field: "no", width: 150, suppressSizeToFit: true, sortable: true}, //checkboxSelection: true 
-        { headerName: "Title", field: "title", width: 1050, sortable: true}, 
-        { headerName: "Name", field: "name", width: 150, sortable: true},
-        { headerName: "RegDate", field: "regDate", width: 150, sortable: true},
-        { headerName: "View", field: "view", width: 150, sortable: true},
-      ],
-      // rowData,
-      rowData: [
-        { no: "1", title: "Title1", name: "NohBug", regDate: "2022-03-27", view: 100 },
-        { no: "2", title: "Title2", name: "NohBug", regDate: "2022-03-28", view: 100 },
-        { no: "3", title: "Title3", name: "NohBug", regDate: "2022-03-29", view: 100 },
-        { no: "4", title: "Title4", name: "NohBug", regDate: "2022-03-30", view: 100 },
-        { no: "5", title: "Title5", name: "NohBug", regDate: "2022-03-31", view: 100 },
-      ],
-      onGridReady,
-      getSelectedRows
+      columnDefs: gridOptions().columnDefs, //gridOption
+      rowData: [],  //gridData
+      onGridReady: '',
+      gridApi: '',
+      columnApi: ''
+    }
+  },
+  created(){
+    this.setup()  //setup for the grid
+  },
+  mounted(){
+  },
+  methods: {
+    setup() {
+      this.rowData = reactive([]) //init rowData
+      this.gridApi = ref(null)  //init gridApi
+      this.columnApi = ref(null)  //init columnApi
+
+      this.setApi() //api
+      this.gridReady()  //gridReady
+    },
+    setApi(){
+      let useMock = true  //mockup true or false
+      onMounted(() => {
+        if(useMock === false){
+          fetch('https://www.ag-grid.com/example-assets/row-data.json')
+            .then(response => response.json())
+            .then(remoteRowData => this.rowData.value = remoteRowData.value)
+        }
+        else{
+          this.rowData = mock.rowData
+        }
+      })
+    },
+    gridReady() {
+      this.onGridReady = params => {
+        this.columnApi = params.columnApi
+        this.gridApi = params.api
+      }
+    },
+    getSelectedRows(){
+      let selectedNodes = this.gridApi.getSelectedNodes()
+      let selectedData = selectedNodes.map(node => node.data)
+      alert(`Selected Nodes:\n${JSON.stringify(selectedData)}`)
+      return selectedData
     }
   }
 }
@@ -85,6 +91,7 @@ export default {
 }
 section {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
