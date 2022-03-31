@@ -2,12 +2,10 @@
   <section>
     <button @click="getSelectedRows()">Get Selected Rows</button>
       <ag-grid-vue 
-        
         class="ag-theme-alpine"
         :columnDefs="columnDefs"
         :rowData="rowData"
         rowSelection="multiple"
-        autoGroupColumnDef="autoGroupColumnDef"
         @grid-ready="onGridReady"
         >
     </ag-grid-vue>
@@ -16,9 +14,9 @@
 
 <script>
 import {reactive, ref, onMounted} from "vue"
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-community/dist/styles/ag-grid.css"
+import "ag-grid-community/dist/styles/ag-theme-alpine.css"
+import { AgGridVue } from "ag-grid-vue3"
 
 export default {
   name: 'NoticeBoard',
@@ -30,19 +28,21 @@ export default {
     let gridApi = ref(null)
     // eslint-disable-next-line no-unused-vars
     let columnApi = ref(null)
+
     
     onMounted(() => {
         fetch('https://www.ag-grid.com/example-assets/row-data.json')
           .then(result => result.json())
-          .then(remoteRowData => rowData.value = remoteRowData);
+          .then(remoteRowData => rowData.value = remoteRowData)
     })
 
     const onGridReady = params => {
-      gridApi = params.api;
-      columnApi = params.columnApi;
+      gridApi = params.api
+      columnApi = params.columnApi
     }
 
     const getSelectedRows = () => {
+      console.log("##gridApi", gridApi)
       const selectedNodes = gridApi.value.getSelectedNodes()
       const selectedData = selectedNodes.map( node => node.data )
       const selectedDataStringPresentation = selectedData.map( node => `${node.make} ${node.model}`).join(', ')
@@ -50,24 +50,20 @@ export default {
     }
     return {
       columnDefs: [
-        { headerName: "Make", field: "make", sortable: true, filter: true, checkboxSelection: true, rowGroup: true},
-        { headerName: "Model", field: "model", sortable: true, filter: true}, 
-        { headerName: "Price", field: "price", sortable: true, filter: true},
+        { headerName: "No", field: "no", width: 150, suppressSizeToFit: true, sortable: true}, //checkboxSelection: true 
+        { headerName: "Title", field: "title", width: 1050, sortable: true}, 
+        { headerName: "Name", field: "name", width: 150, sortable: true},
+        { headerName: "RegDate", field: "regDate", width: 150, sortable: true},
+        { headerName: "View", field: "view", width: 150, sortable: true},
       ],
-      rowData,
-      // rowData: [
-      //   { make: "Toyota", model: "Celica", price: 35000 },
-      //   { make: "Ford", model: "Mondeo", price: 32000 },
-      //   { make: "Porsche", model: "Boxter", price: 72000 },
-      // ],
-      autoGroupColumnDef: {
-        headerName: 'Model',
-        field: 'model',
-        cellRenderer: 'agGroupCellRenderer',
-        cellRendererParams: {
-          checkbox: true
-      }
-     },
+      // rowData,
+      rowData: [
+        { no: "1", title: "Title1", name: "NohBug", regDate: "2022-03-27", view: 100 },
+        { no: "2", title: "Title2", name: "NohBug", regDate: "2022-03-28", view: 100 },
+        { no: "3", title: "Title3", name: "NohBug", regDate: "2022-03-29", view: 100 },
+        { no: "4", title: "Title4", name: "NohBug", regDate: "2022-03-30", view: 100 },
+        { no: "5", title: "Title5", name: "NohBug", regDate: "2022-03-31", view: 100 },
+      ],
       onGridReady,
       getSelectedRows
     }
@@ -81,10 +77,11 @@ export default {
   @import "~ag-grid-community/dist/styles/ag-theme-alpine.css"; //ag-grid theme
 
 .ag-theme-alpine {
-  width: 700px;
+  width: 90%;
   height: 700px;
-//   // @include ag-theme-alpine((
-//   // ));
+  text-align: center
+  // @include ag-theme-alpine((
+  // ));
 }
 section {
   display: flex;
