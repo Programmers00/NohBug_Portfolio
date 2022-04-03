@@ -1,12 +1,21 @@
 <template>
   <section>
-    <button @click="getSelectedRows()">Get Selected Rows</button>
+    <!-- <button @click="getSelectedRows()">Get Selected Rows</button> -->
       <ag-grid-vue 
-        class="ag-theme-alpine"
-        :columnDefs="columnDefs"
+        class="ag-theme-alpine grid"
+        :columnDefs="columnDefsGrid"
         :rowData="rowData"
         rowSelection="multiple"
         @grid-ready="onGridReady"
+        @cell-clicked="onCellClicked"
+        >
+    </ag-grid-vue>
+     <ag-grid-vue 
+        class="ag-theme-alpine content"
+        :columnDefs="columnDefsContent"
+        :rowData="contentData"
+        :rowHeight="281"
+        rowSelection="multiple"
         >
     </ag-grid-vue>
   </section>
@@ -27,8 +36,10 @@ export default {
   },
   data() {
     return {
-      columnDefs: gridOptions().columnDefs, //gridOption
+      columnDefsGrid: gridOptions().columnDefsGrid, //gridOption
+      columnDefsContent: gridOptions().columnDefsContent, //gridOption
       rowData: [],  //gridData
+      contentData: [],
       onGridReady: '',
       gridApi: '',
       columnApi: ''
@@ -62,16 +73,18 @@ export default {
       })
     },
     gridReady() {
-      this.onGridReady = params => {
+      // in onGridReady, store the api for later use
+      this.onGridReady = (params) => {
         this.columnApi = params.columnApi
         this.gridApi = params.api
       }
     },
-    getSelectedRows(){
+    onCellClicked(){
       let selectedNodes = this.gridApi.getSelectedNodes()
       let selectedData = selectedNodes.map(node => node.data)
-      alert(`Selected Nodes:\n${JSON.stringify(selectedData)}`)
-      return selectedData
+      this.contentData = selectedData
+      // alert(`Selected Nodes:\n${JSON.stringify(selectedData)}`)
+      // return selectedData
     }
   }
 }
@@ -81,13 +94,22 @@ export default {
 <style lang="scss" scoped>
   @import "~ag-grid-community/dist/styles/ag-grid.css"; //ag-grid style
   @import "~ag-grid-community/dist/styles/ag-theme-alpine.css"; //ag-grid theme
-
-.ag-theme-alpine {
+// .ag-theme-alpine {
+//   // width: 90%;
+//   // height: 700px;
+//   // text-align: center
+//   // @include ag-theme-alpine((
+//   // ));
+// }
+.grid {
   width: 90%;
-  height: 700px;
+  height: 350px;
   text-align: center
-  // @include ag-theme-alpine((
-  // ));
+}
+.content {
+  width: 90%;
+  height: 350px;
+  text-align: center
 }
 section {
   display: flex;
