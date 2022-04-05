@@ -15,7 +15,7 @@
           <router-link to='/location'>Location</router-link>
         </li>
         <li>
-          <router-link to='/contact'>Contact</router-link>
+          <router-link to='/trois'>Trois</router-link>
         </li>
       </ul>
       <label for="navbar__toggleBtn"></label>
