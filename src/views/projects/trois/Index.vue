@@ -4,18 +4,8 @@
       <Camera :position="{ z: 10 }" />
       <Scene>
         <PointLight :position="{ y: 50, z: 50 }" />
-        <Box ref="box" :rotation="{ y: Math.PI / 4, z: Math.PI / 4 }">
-          <StandardMaterial :props="{ displacementScale: 0.1 }">
-            <Texture :src="src"/>
-          </StandardMaterial>
-        </Box>
-        <Sphere ref="sphere" :position="{ x: -10, y: 0, z: -20}" :radius="radius">
-          <StandardMaterial :props="{ displacementScale: 0.1 }">
-            <!-- <Texture src="ink.jpg" />
-            <Texture src="ink.jpg" />
-            <Texture src="ink.jpg" />
-            <Texture src="ink.jpg" />
-            <Texture src="ink.jpg" /> -->
+        <Sphere ref="sphere" :position="{x:0, y:0, z:0}" :radius="sphereData.radius">
+          <StandardMaterial :props="{ displacementScale: 0.01 }">
           </StandardMaterial>
         </Sphere >
       </Scene>
@@ -25,31 +15,58 @@
 
 <script>
 import { onMounted, ref } from 'vue'
-import { Box, Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene } from 'troisjs'
+import { Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene} from 'troisjs'
 export default {
   name: 'trois',
+  components: {
+    Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene
+  },
   data() {
     return {
-      radius: 5,
-      src: '@/assets/ink.jpg'
+      sphereData: {
+        radius: 1
+      }
     }
-  },
-  components: {
-    Box, Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene
   },
   setup() {
     const renderer = ref(null)
-    const box = ref(null)
     const sphere = ref(null)
+    
+    const speed = 0.05
+    const keyStates = {}
+
+    //keydown event
+    document.addEventListener('keydown', event => {
+      keyStates[event.key] = true
+    })
+    //keyup event
+    document.addEventListener('keyup', event => {
+      keyStates[event.key] = false
+    })
     
     onMounted(()=> {
       renderer?.value?.onBeforeRender(() => {
-        box.value.mesh.rotation.x += 0.01;
-        sphere.value.mesh.rotation.x += 0.02;
-        // console.log("sphere.value", sphere.value)
+        if(keyStates['a']){
+          sphere.value.mesh.position.x -= speed
+          sphere.value.mesh.rotation.z += speed
+        }
+        if(keyStates['d']){
+          sphere.value.mesh.position.x += speed
+          sphere.value.mesh.rotation.z -= speed
+        }
+        if(keyStates['w']){
+          sphere.value.mesh.position.y += speed
+          sphere.value.mesh.rotation.x -= speed
+        }
+        if(keyStates['s']){
+          sphere.value.mesh.position.y -= speed
+          sphere.value.mesh.rotation.x += speed
+        }
     })
     })
-    return { renderer, box, sphere}
+    return { renderer, sphere, keyStates }
+  },
+  methods: {
   }
 }
 </script>
