@@ -1,13 +1,22 @@
 <template>
   <section>
     <Renderer resize="window" orbit-ctrl ref="renderer" alpha>
-      <Camera :position="{ z: 10 }" />
+      <Camera :position="{ x:0, y:-80, z: 50 }" />
       <Scene>
-        <PointLight :position="{ y: 50, z: 50 }" />
+        <Plane :position="{ z: -1 }" receive-shadow>
+          <PlaneGeometry :width="80" :height="80">
+            <!-- <PhongMaterial color="skyblue" /> -->
+          </PlaneGeometry>
+        </Plane>
+        <PointLight :position="{ y: 0, z: 20 }" />
         <Sphere ref="sphere" :position="{x:0, y:0, z:0}" :radius="sphereData.radius">
           <StandardMaterial :props="{ displacementScale: 0.01 }">
           </StandardMaterial>
-        </Sphere >
+        </Sphere>
+        <Box ref="box" :width="10" :height="10" :depth="10" :position="{x:10, y:10, z:4}">
+          <StandardMaterial color="green">
+          </StandardMaterial>
+        </Box>
       </Scene>
     </Renderer>
   </section>
@@ -15,11 +24,12 @@
 
 <script>
 import { onMounted, ref } from 'vue'
-import { Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene} from 'troisjs'
+import { Sphere, Box, Camera, StandardMaterial, PointLight, Renderer, Scene, Plane, PlaneGeometry, //PhongMaterial
+} from 'troisjs'
 export default {
   name: 'trois',
   components: {
-    Sphere, Camera, StandardMaterial, PointLight, Renderer, Scene
+    Sphere, Box, Camera, StandardMaterial, PointLight, Renderer, Scene, Plane, PlaneGeometry,//PhongMaterial
   },
   data() {
     return {
@@ -31,10 +41,10 @@ export default {
   setup() {
     const renderer = ref(null)
     const sphere = ref(null)
+    const box = ref(null)
     
-    const speed = 0.05
+    const speed = 0.1
     const keyStates = {}
-
     //keydown event
     document.addEventListener('keydown', event => {
       keyStates[event.key] = true
@@ -44,6 +54,7 @@ export default {
       keyStates[event.key] = false
     })
     
+
     onMounted(()=> {
       renderer?.value?.onBeforeRender(() => {
         if(keyStates['a']){
@@ -64,7 +75,7 @@ export default {
         }
     })
     })
-    return { renderer, sphere, keyStates }
+    return { renderer, sphere, box}
   },
   methods: {
   }
